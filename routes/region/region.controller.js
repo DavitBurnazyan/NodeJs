@@ -8,7 +8,6 @@ exports.get = (req, res) => {
 	}).catch((err) => {
 		res.status(503).json({err});
 	});
-
 };
 
 exports.store = (req, res) => {
@@ -27,6 +26,13 @@ exports.store = (req, res) => {
 	})
 };
 
+exports.getOne = (req, res) => {
+	Region.findById(req.params.id).then((region) => {
+		res.status(201).json({region});
+	}).catch((err) => {
+		res.status(503).json({err})
+	})
+}
 
 exports.delete = (req,res) => {
 	Region.findByIdAndDelete(req.body.id).then((data) => {
@@ -39,3 +45,22 @@ exports.delete = (req,res) => {
 		res.status(503).json({err});
 	});
 }
+
+exports.update = (req, res) => {
+	const result = regionWithJoi.Region(req, res);
+    if (result !== true) {	
+    	return res.status(503).json({result})
+  	}
+	Region.findByIdAndUpdate(req.body.id, {
+		name: req.body.name
+	}, {
+		new: true,
+	}).then((item) => {
+		if (!item) {
+			return res.status(503).json({'info': 'Region not exist'});
+		}
+		res.status(201).json({item})
+	}).catch((err) => {
+		res.status(503).json({err})
+	});
+};
