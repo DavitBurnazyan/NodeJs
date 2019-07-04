@@ -1,10 +1,14 @@
 const express = require('express');
 const config = require('./config');
+const bodyParser = require('body-parser');
 const routes = require('./routes/index');
 const mongoose = require('mongoose');
 const app = express();
 
-routes(app);
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+
 
 mongoose.connect(config.Db.url, {
   useNewUrlParser: true,
@@ -17,5 +21,5 @@ mongoose.connect(config.Db.url, {
 });
 
 
-
+routes(app);
 

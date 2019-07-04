@@ -1,4 +1,3 @@
-/*
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
@@ -6,7 +5,9 @@ const CitiesSchema = new Schema({
 	name: { type: String, required: true, index: { unique: true} },
 	timezones: { type: Array },
 	isCapital: { type: Boolean },
-	country: []
+	country: [],
+	createAt: { type: Date },
+	updateAt: { type: Date }
 });
 
 let City = null;

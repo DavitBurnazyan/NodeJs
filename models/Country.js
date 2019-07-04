@@ -7,7 +7,9 @@ const CountriesSchema = new Schema((Region) => {
 	alpha3Code: { type: String, required: true, index: { unique: true}},
 	population: { type: Number },
 	latlng: { type: Array },
-	region: []
+	region: [],
+	createAt: { type: Date },
+	updateAt: { type: Date }
 });
 	let Country = null;
 try {

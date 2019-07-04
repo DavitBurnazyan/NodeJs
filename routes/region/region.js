@@ -2,17 +2,20 @@ const express = require('express');
 const regionController = require('./region.controller');
 const router = express.Router();
 
+router.get('',regionController.get);
 router.post('/store',regionController.store);
-
-// app.get();
-// app.put();
-// app.delete();
+router.delete('/:id',regionController.delete);
 
 
 /*
-	HTTP Verb     Operation
-	GET           Read
-	POST          Create
-	PUT           Update
-	DELETE        Delete
+	Verb	URI	Action	Route Name
+	GET	 /photos	index	photos.index
+	GET	 /photos/create	create	photos.create
+	POST /photos	store	photos.store
+	GET	 /photos/{photo}	show	photos.show
+	GET	 /photos/{photo}/edit	edit	photos.edit
+	PUT  /PATCH/photos/{photo}	update	photos.update
+	DELETE	/photos/{photo}	destroy	photos.destroy
 */
+
+module.exports = router;
