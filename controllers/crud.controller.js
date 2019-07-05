@@ -3,7 +3,7 @@ const modelWithJoi = require('../helpers/joi_verify');
 
 module.exports = { 	
 	get: (req, res) => {
-		const getInfo = checkModel.model.formHandler(req,res);
+		const getInfo = checkModel.model.get(req,res);
 		const Model = getInfo.model;
 
 		Model.find().then((data) => {
@@ -13,7 +13,7 @@ module.exports = {
 		})
 	},
 	store: (req, res) => {
-		let getInfo = checkModel.model.formHandler(req,res);
+		let getInfo = checkModel.model.get(req,res);
 		const Model = getInfo.model;
 		
 		const result = modelWithJoi.Model(req, res);
@@ -30,7 +30,7 @@ module.exports = {
 		})
 	},
 	getOne: (req, res) => {
-		const getInfo = checkModel.model.formHandler(req,res);
+		const getInfo = checkModel.model.get(req,res);
 		const Model = getInfo.model;
 
 		Model.findById(req.params.id).then((region) => {
@@ -40,7 +40,7 @@ module.exports = {
 		})
 	},
 	remove: (req,res) => {
-		const getInfo = checkModel.model.formHandler(req,res);
+		const getInfo = checkModel.model.get(req,res);
 		const Model = getInfo.model;
 
 		Model.findByIdAndDelete(req.body.id).then((data) => {
@@ -54,7 +54,7 @@ module.exports = {
 		})
 	},
 	update: (req, res) => {
-		const getInfo = checkModel.model.formHandler(req,res);
+		const getInfo = checkModel.model.get(req,res);
 		const Model = getInfo.model;
 		const result = modelWithJoi.Model(req, res);
 	    if (result !== true) {	

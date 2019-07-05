@@ -3,7 +3,7 @@
  const Country = require('../models/Country');
 
 exports.model = {
-    formHandler: function(req,res){
+    get: function(req,res){
 
     	if(req.originalUrl.indexOf("/region") != -1){
     		return  {
