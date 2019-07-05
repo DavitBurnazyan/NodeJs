@@ -1,9 +1,9 @@
-const Region = require('./region/region');
-/*const City = require('./city/City');
-const Country = require('./country/Country');*/
-
+const crudRoute = require('./crud');
 
 const getRoutes = (app) => {
-	app.use('/region',Region);
+	app.use('/region',crudRoute);
+	app.use('/city',crudRoute);
+	app.use('/country',crudRoute);
 } 
+
 module.exports = getRoutes;

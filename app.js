@@ -3,11 +3,12 @@ const config = require('./config');
 const bodyParser = require('body-parser');
 const routes = require('./routes/index');
 const mongoose = require('mongoose');
+const checkModel = require('./helpers/checkModel');
+
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
 
 
 mongoose.connect(config.Db.url, {
@@ -19,7 +20,6 @@ mongoose.connect(config.Db.url, {
 	console.log('Could not connect to the database. Exiting now...');
 	process.exit();
 });
-
 
 routes(app);
 

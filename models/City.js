@@ -3,11 +3,11 @@ const Schema = mongoose.Schema;
 
 const CitiesSchema = new Schema({
 	name: { type: String, required: true, index: { unique: true} },
-	timezones: { type: Array },
+	timezones: { type: Number },
 	isCapital: { type: Boolean },
-	country: [],
+	country: { type: String },
 	createAt: { type: Date },
-	updateAt: { type: Date }
+	updateAt: { type: Date, default: null }
 });
 
 let City = null;

@@ -1,12 +1,13 @@
 const express = require('express');
-const regionController = require('./region.controller');
+const crudController = require('../controllers/crud.controller');
 const router = express.Router();
 
-router.get('/',regionController.get);
-router.get('/:id',regionController.getOne);
-router.post('/store',regionController.store);
-router.put('/:id',regionController.update);
-router.delete('/:id',regionController.delete);
+router.get('/',crudController.get);
+router.get('/:id',crudController.getOne);
+router.post('/store',crudController.store);
+router.put('/:id',crudController.update);
+router.delete('/:id',crudController.remove);
+
 
 
 /*
